@@ -1,5 +1,5 @@
 h1 {
-    color: greenyellow;
+    color:greenyellow;
     text-align: center;
     font-family:"Nova Flat",helvetica,sans-serif
 }
@@ -69,11 +69,11 @@ body {
 
 
 
-.led-green {
+.led-yellow {
   margin: 0 auto;
   width: 24px;
   height: 24px;
-  background-color: #ABFF00;
+  background-color:yellow;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
 }
@@ -434,11 +434,11 @@ body {
 
 
 .Home{
-    position: absolute;
-    left:0px;
-    top:0px;
+    position:absolute;
+    top:1px;
+    left:2px;
     background-color: darkcyan;
-
+    border-radius:10px;
 }
 
 .Home:hover {
