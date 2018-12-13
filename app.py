@@ -1,25 +1,10 @@
-# app.secret_key = 'secretkeyhereplease'
-from flask import Flask, render_template, request, redirect, url_for
-from flask_login import LoginManager, login_user, login_required, logout_user
-# from .forms import SignupForm
-# from .models import db
+from flask import Flask, render_template
+from his import Hist
 
 app = Flask(__name__)
-# app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///UserStorage.db'
-#
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-#
-#
-# @login_manager.user_loader
-# def load_user(username):
-#     return User.query.filter_by(username=username).first()
-#
-# @app.route('/protected')
-# @login_required
-# def protected():
-#     return "protected area"
+
+Hist = Hist()
+
 
 @app.route("/")
 def main():
@@ -28,43 +13,36 @@ def main():
 
 @app.route("/login", methods=('GET', 'POST'))
 def login():
-    # form = SignupForm()
-    # if request.method == 'GET':
-    #     return render_template('Login_Page.html', form=form)
-    # elif request.method == 'POST':
-    #     if form.validate_on_submit():
-    #         user=User.query.filter_by(username=form.username.data).first()
-    #         if user:
-    #             if user.password == form.password.data:
-    #                 login_user(user)
-    #                 return "User logged in"
-    #             else:
-    #                 return "Wrong password"
-    #         else:
-    #             return "user doesn't exist"
-    # else:
-    #         return "form not validated"
-    return render_template("Login_Page.html")
+    login_form = LoginForm(request.form)
+    error = None
+    if request.method == 'POST':
+        user = get_user(login_form.id.data, login_form.password.data)
+        if user is None:
+            error = 'Wrong username and password'
+        else:
+            session['username'] = user.username
+            return redirect (url_for('index'))
+        flash(error)
+    return render_template("Login_Page.html", form=login_form)
 
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
-    # form = SignupForm()
-    # if request.method == 'GET':
-    #     return render_template('Register.html', form=form)
-    # elif request.method == 'POST':
-    #     if form.validate_on_submit():
-    #         if User.query.filter_by(username=form.username.data).first():
-    #             return "Username already exists"
-    #         else:
-    #             newuser = User(form.username.data, form.password.data)
-    #             db.session.add(newuser)
-    #             db.session.commit()
-    #
-    #             login_user(newuser)
-    #
-    #             return "User created!!!"
-    return render_template("Register.html")
+    form = RegisterForm(request.form)
+    if request.method == 'POST':
+        username = form.id.data
+        password = form.password.data
+        error = None
+        if not username:
+            error = 'Username is required.'
+        elif not password:
+            error = 'Password is required.'
+        else:
+            create_user(username, password)
+            return redirect (url_for('login'))
+        flash(error)
+    return render_template("Register.html", form=form)
+
 
 
 
@@ -98,10 +76,14 @@ def cctv4():
     return render_template("CCTV_4.html")
 
 
-@app.route("/Aircon")
+@app.route("/Aircon", methods=("GET", "POST"))
 def aircon():
-    return render_template("AirconDesign.html")
+    return render_template("AirconDesign.html", value=24)
 
+@app.route("/Aircon/update/<int:value>")
+def update(value):
+    value = value + 1
+    return render_template('AirconDesign.html', value=value)
 
 @app.route("/Lighting")
 def lighting():
@@ -120,16 +102,20 @@ def items():
 
 @app.route('/history')
 def history():
-    return render_template('history.html')
+    return render_template('history.html', history=Hist)
 
 
-@app.route("/logout")
-@login_required
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
+
+
+
+@app.route('/logout')
 def logout():
-    logout_user()
-    return "Logged out"
+    session.clear()
+    return login()
 
-if __name__ == "__main__":
-    # app.init_db()
+if __name__ == "_main_":
     app.run()
-
