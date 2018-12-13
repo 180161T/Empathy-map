@@ -1,10 +1,32 @@
 from flask import Flask, render_template
-from Persistence import *
+from flask_login import LoginManager, login_user, login_required, logout_user
+# from.forms import SignupForm
+# from .models import db
 from his import Hist
 
 app = Flask(__name__)
-
+# app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////database/database.sqlite'
+# login_manager = LoginManager()
+# login_manager.init_app(app)
 Hist = Hist()
+#
+#
+# def init_db():
+#     db.init_app(app)
+#     db.app = app
+#     db.create_all()
+#
+#
+# @login_manager.user_loader
+# def load_user(username):
+#     return User.query.filter_by(username = username).first()
+#
+#
+# @app.route('/protected')
+# @login_required
+# def protected():
+#     return "protected area"
 
 
 @app.route("/")
@@ -14,36 +36,42 @@ def main():
 
 @app.route("/login", methods=('GET', 'POST'))
 def login():
-    login_form = LoginForm(request.form)
-    error = None
-    if request.method == 'POST':
-        user = get_user(login_form.id.data, login_form.password.data)
-        if user is None:
-            error = 'Wrong username and password'
-        else:
-            session['username'] = user.username
-            return redirect (url_for('index'))
-        flash(error)
+    # form = SignupForm()
+    # if request.method == 'GET':
+    #     return render_template('Login_Page.html', form=form)
+    # elif request.method == 'POST':
+    #     if form.validate_on_submit():
+    #         user=User.query.filter_by(username=form.username.data).first()
+    #         if user:
+    #             if user.password == form.password.data:
+    #                 login_user(user)
+    #                 return "User logged in"
+    #             else:
+    #                 return "Wrong password"
+    #         else:
+    #             return "Username doesn't exist"
+    # else:
+    #         return "form not validated"
     return render_template("Login_Page.html", form=login_form)
 
 
 @app.route("/register", methods=('GET', 'POST'))
 def register():
-    form = RegisterForm(request.form)
-    if request.method == 'POST':
-        username = form.id.data
-        password = form.password.data
-        error = None
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        else:
-            create_user(username, password)
-            return redirect (url_for('login'))
-        flash(error)
+    # form = SignupForm()
+    # if request.method == 'GET':
+    #     return render_template('Register.html', form = form)
+    # elif request.method == 'POST':
+    #     if form.validate_on_submit():
+    #         if User.query.filter_by(username=form.username.data).first():
+    #             return "Username already exists"
+    #         else:
+    #             newuser = User(form.username.data, form.password.data)
+    #             db.session.add(newuser)
+    #             db.session.commit()
+    #             return "User created!!!"
+    #     else:
+    #         return "Form didnt validate"
     return render_template("Register.html", form=form)
-
 
 
 
@@ -111,13 +139,10 @@ def map():
     return render_template('map.html')
 
 
-
-
-@app.route('/logout')
+@app.route("/logout")
+# @login_required
 def logout():
-    session.clear()
-    return login()
-
-if __name__ == "__main__":
+    logout_user()
+    return "Logged out"
+if __name__ == "_main_":
     app.run()
-

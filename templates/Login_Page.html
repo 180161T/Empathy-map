@@ -97,14 +97,14 @@
 <div class="loginbox">
 <img id="avatar" src="{{url_for('static', filename='Username.jpg')}}">
     <h1>Login</h1>
-    <form method="post" action="/login">
+    <form method="POST" action="/login">
         <p>Username</p>
         <input type="text" id="username" placeholder="Username" required>
         <p>Password</p>
         <input type="text" id="password" placeholder="Password" required>
         <input id="check" type="checkbox" value="remember">
         <label for="check">Remember password</label>
-        <input type="submit" value="Log In">
+        <input type="submit" value="Login">
         <div class="new">
             <p>New to this?</p><a href="/register">Sign up here</a>
         </div>
