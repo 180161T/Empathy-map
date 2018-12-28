@@ -1,7 +1,5 @@
 from flask import Flask, render_template
-# from flask_login import LoginManager, login_user, login_required, logout_user
-# from.forms import SignupForm
-# from .models import db
+from flask_sqlalchemy import SQLAlchemy
 from his import Hist
 
 app = Flask(__name__)
@@ -53,6 +51,9 @@ def login():
     # else:
     #         return "form not validated"
     return render_template("Login_Page.html", form=login_form)
+
+
+
 
 
 @app.route("/register", methods=('GET', 'POST'))
