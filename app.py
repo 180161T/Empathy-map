@@ -102,4 +102,5 @@ def logout():
 
 
 if __name__ == "_main_":
+    db.init_app(app)
     app.run()

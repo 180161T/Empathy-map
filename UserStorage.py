@@ -1,17 +1,6 @@
-import sqlite3
-with sqlite3.connect("UserStorage.db") as db:
-    cursor = db.cursor()
-
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS user(
-username VARCHAR(20) NOT NULL ,
-password VARCHAR(20) NOT NULL) ;
-''')
-
-cursor.execute('''
-VALUES("Xavier","xlyx")
-''')
-db.commit()
-
-cursor.execute("SELECT * FROM user")
-cursor.fetchall()
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db=SQLAlchemy(app)
