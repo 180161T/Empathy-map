@@ -5,6 +5,9 @@ from his import Hist
 app = Flask(__name__)
 Hist = Hist()
 
+app.config.from_pyfile('app.py')
+
+db = SQLAlchemy(app)
 
 @app.route("/")
 def main():
