@@ -1,13 +1,17 @@
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from his import Hist
 
 app = Flask(__name__)
 Hist = Hist()
 
-app.config.from_pyfile('app.py')
+# app.config.from_pyfile('app.py')
+#
+# db = SQLAlchemy(app)
 
-db = SQLAlchemy(app)
+
+# class Test(db.Model):
+#     id = db.Column(db.Integer, primary_key= True)
 
 @app.route("/")
 def main():
@@ -93,14 +97,12 @@ def map():
 
 
 @app.route("/logout")
-# @login_required
 def logout():
-
     return "Logged out"
 
 
 
 
 if __name__ == "_main_":
-    db.init_app(app)
-    app.run()
+    # db.init_app(app)
+    app.run(debug = True)

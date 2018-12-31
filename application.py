@@ -1,0 +1,3 @@
+SQLALCHEMY_DATABASE_URI='mysql://sql12271854:HBA6sntFlNA8ZByL@sql12.freemysqlhosting.net/mysql://sql12271854'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+DEBUG=True
