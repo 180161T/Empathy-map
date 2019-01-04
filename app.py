@@ -23,13 +23,9 @@ def login():
     return render_template("Login_Page.html")
 
 
-
-
 @app.route("/register", methods=('GET', 'POST'))
 def register():
     return render_template("Register.html")
-
-
 
 
 @app.route("/remind")
@@ -66,10 +62,12 @@ def cctv4():
 def aircon():
     return render_template("AirconDesign.html", value=24)
 
+
 @app.route("/Aircon/update/<int:value>")
 def update(value):
     value = value + 1
     return render_template('AirconDesign.html', value=value)
+
 
 @app.route("/Lighting")
 def lighting():
@@ -101,8 +99,5 @@ def logout():
     return "Logged out"
 
 
-
-
-if __name__ == "_main_":
-    # db.init_app(app)
-    app.run(debug = True)
+if __name__ == "__main__:"
+    app.run(debug=True)
