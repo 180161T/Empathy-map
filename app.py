@@ -1,17 +1,9 @@
 from flask import Flask, render_template
-# from flask_sqlalchemy import SQLAlchemy
 from his import Hist
 
 app = Flask(__name__)
 Hist = Hist()
 
-# app.config.from_pyfile('app.py')
-#
-# db = SQLAlchemy(app)
-
-
-# class Test(db.Model):
-#     id = db.Column(db.Integer, primary_key= True)
 
 @app.route("/")
 def main():
