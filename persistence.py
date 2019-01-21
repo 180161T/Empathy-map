@@ -1,47 +1,45 @@
 import shelve
-import uuid
 
 
 class User:
     def __init__(self):
-        self.id = id
-        self.__username = ''
-        self.__password = ''
-
-    def get_id(self):
-        return self.__id
-
-    def set_username(self, username):
-        self.__username = username
-
-    def set_password(self, password):
-        self.__password = password
-
-    def get_username(self):
-        return self.__username
-
-    def get_password(self):
-        return self.__password
+        self.username = ''
+        self.password = ''
 
 
 loginFile = shelve.open('loginPage')
 
 
-def create_user(username, password):
-    id = str(uuid.uuid4())
-    user = User(id)
-    user.set_username(username)
-    user.set_password(password)
-    loginFile[id] = user
+def clear_user():
+    klist = list(loginFile.keys())
+    for key in klist:
+        del loginFile[key]
+
+
+def get_users():
+    user_list = []
+    klist = list(loginFile.keys())
+    for key in klist:
+        user_list.append(loginFile[key])
+    return user_list
+
+
+def init_users():
+    clear_user()
+    for i in range(5):
+        create_user('user'+str(i), 'pass'+str(i))
 
 
 def get_user(username, password):
-    klist = list(loginFile.keys())
-    for key in klist:
-        user = loginFile[key]
-        print(user.get_username(), username, user.get_password(), password)
-        if user.get_username() == username and user.get_password() == password:
+    if username in loginFile:
+        user = loginFile[username]
+        if  user.password == password:
             return user
     return None
 
 
+def create_user(username, password):
+    u = User()
+    u.username = username
+    u.password = password
+    loginFile[username] = u
