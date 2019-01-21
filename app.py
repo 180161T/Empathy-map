@@ -13,6 +13,7 @@ def init():
     return 'db initialised'
 
 
+@app.route('/')
 def main():
     form = LoginForm(request.form)
     if 'username' in session:
@@ -21,7 +22,7 @@ def main():
         return render_template('Login_Page.html', form = form)
 
 
-@app.route("/", methods=('GET', 'POST'))
+@app.route("/login", methods=('GET', 'POST'))
 def login():
     login_form = LoginForm(request.form)
     error = None
