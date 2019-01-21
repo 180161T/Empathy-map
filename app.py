@@ -68,9 +68,15 @@ def lighting():
 
 @app.route("/sah", methods=('GET', 'POST'))
 def time_alert():
-        if 8 <= datetime.datetime.now().time().hour < 1:
+        if 12 <= datetime.datetime.now().time().hour < 15:
             msg = "Warning, It is still bright out ,save electricity!"
             return render_template("time-alert.html", msgHTML=msg)
+        else:
+            return render_template("Lighting-control.html")
+
+@app.route("/Lighting2")
+def lighting2():
+    return render_template("Lighting-control2.html")
 
 
 
