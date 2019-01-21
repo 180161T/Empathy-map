@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from his import Hist
-
+import datetime
 app = Flask(__name__)
 Hist = Hist()
 
@@ -64,6 +64,14 @@ def update(value):
 @app.route("/Lighting")
 def lighting():
     return render_template("Lighting-control.html")
+
+
+@app.route("/sah", methods=('GET', 'POST'))
+def time_alert():
+        if 8 <= datetime.datetime.now().time().hour < 1:
+            msg = "Warning, It is still bright out ,save electricity!"
+            return render_template("time-alert.html", msgHTML=msg)
+
 
 
 @app.route('/tracker')
