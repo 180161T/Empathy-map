@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from his import Hist
-import datetime
+import datetime, persistence
 app = Flask(__name__)
 Hist = Hist()
 
@@ -68,11 +68,27 @@ def lighting():
 
 @app.route("/sah", methods=('GET', 'POST'))
 def time_alert():
-        if 12 <= datetime.datetime.now().time().hour < 15:
+    if request.method == 'POST':
+        time1 = datetime.datetime.now().time().hour
+        persistence.addTime('user1', datetime.datetime.now())
+        if 2 <= datetime.datetime.now().time().hour < 5:
             msg = "Warning, It is still bright out ,save electricity!"
             return render_template("time-alert.html", msgHTML=msg)
-        else:
-            return render_template("Lighting-control.html")
+
+    return render_template("time-alert.html")
+
+
+@app.route('/timehistory')
+def time_history():
+
+    timeList = persistence.getTime('user1')
+    if timeList == None:
+        print("No record")
+    else:
+        for t in timeList:
+            print(t)
+
+    return render_template("timeHistory.html", timeList=timeList)
 
 @app.route("/Lighting2")
 def lighting2():
