@@ -61,9 +61,24 @@ def update(value):
     return render_template('AirconDesign.html', value=value)
 
 
-@app.route("/Lighting")
+@app.route("/Lighting", methods=("GET","POST"))
 def lighting():
-    return render_template("Lighting-control.html")
+    if request.method=="POST":
+        v=request.form["L1"]
+        persistence.createsettings(v)
+        print(v)
+        v2 = request.form["L2"]
+        persistence.createsettings(v2)
+        print(v2)
+        v3 = request.form["L3"]
+        persistence.createsettings(v3)
+        print(v3)
+        v4 = request.form["L4"]
+        persistence.createsettings(v4)
+        print(v4)
+        return render_template("Lighting-control.html")
+    else:
+        return render_template("Lighting-control.html")
 
 
 @app.route("/sah", methods=('GET', 'POST'))
@@ -71,15 +86,18 @@ def time_alert():
     if request.method == 'POST':
         time1 = datetime.datetime.now().time().hour
         persistence.addTime('user1', datetime.datetime.now())
-        if 2 <= datetime.datetime.now().time().hour < 5:
+        if 7<= datetime.datetime.now().time().hour < 9:
             msg = "Warning, It is still bright out ,save electricity!"
             return render_template("time-alert.html", msgHTML=msg)
-
+        else:
+            return render_template("Lighting-control2.html")
     return render_template("time-alert.html")
 
 
 @app.route('/timehistory')
 def time_history():
+
+
 
     timeList = persistence.getTime('user1')
     if timeList == None:
@@ -93,6 +111,18 @@ def time_history():
 @app.route("/Lighting2")
 def lighting2():
     return render_template("Lighting-control2.html")
+
+
+@app.route("/Lightsaving")
+def savedsettings():
+    return render_template("LightSaving.html")
+
+
+
+@app.route("/w")
+def save_setting():
+   return render_template("LightSaving.html")
+
 
 
 

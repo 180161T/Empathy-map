@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>timeHistory</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='button.css') }}">
+
 </head>
 <body>
+
+<a href="/Lighting2"><button class="Lightpage">Lights Page</button></a>
+<br>
+
 {% for t in timeList %}
     {{ t }}
     <br/>
 {% endfor %}
+
+
+
 </body>
 </html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>saving</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='button.css') }}">
+</head>
+<body>
+<form action="/Lighting" method="post">
+
+    <button type="button" onclick="myOnFunction1()" id="q">ON</button>
+    <button type="button" onclick="myOffFunction1()" id="w">OFF</button>
+
+
+
+    <div id="ydiv1" style="  display:none;">
+   Light 1 Brightness level(0-100):<br>
+  <input type="number" name="L1" min="0" max="100">
+    </div>
+
+        <br>
+
+    <button type="button" onclick="myOnFunction2()" id="q1">ON</button>
+    <button type="button" onclick="myOffFunction2()" id="w1">OFF</button>
+
+
+    <div  id="ydiv2" style="  display:none;">
+   Light 2 Brightness level(0-100):<br>
+  <input type="number" name="L2" min="0" max="100">
+    </div>
+
+        <br>
+
+
+    <button type="button" onclick="myOnFunction3()" id="q2">ON</button>
+    <button type="button" onclick="myOffFunction3()" id="w2">OFF</button>
+
+
+    <div  id="ydiv3" style="  display:none;">
+   Light 3 Brightness level(0-100):<br>
+  <input type="number" name="L3" min="0" max="100">
+
+    </div>
+
+
+        <br>
+
+
+
+    <button type="button" onclick="myOnFunction4()" id="q3">ON</button>
+    <button type="button" onclick="myOffFunction4()" id="w3">OFF</button>
+
+    <div id="ydiv4" style="  display:none;">
+   Light 4 Brightness level(0-100):<br>
+  <input type="number" name="L4" min="0" max="100">
+
+    </div>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+
+function myOnFunction1() {
+  var x = document.getElementById("ydiv1");
+  x.style.display = "block";
+}
+
+ function myOffFunction1() {
+  var x = document.getElementById("ydiv1");
+  x.style.display = "none";
+}
+
+
+function myOnFunction2() {
+  var x = document.getElementById("ydiv2");
+  x.style.display = "block";
+}
+
+ function myOffFunction2() {
+  var x = document.getElementById("ydiv2");
+  x.style.display = "none";
+}
+
+
+function myOnFunction3() {
+  var x = document.getElementById("ydiv3");
+  x.style.display = "block";
+}
+
+ function myOffFunction3() {
+  var x = document.getElementById("ydiv3");
+  x.style.display = "none";
+}
+
+
+function myOnFunction4() {
+  var x = document.getElementById("ydiv4");
+  x.style.display = "block";
+}
+
+ function myOffFunction4() {
+  var x = document.getElementById("ydiv4");
+  x.style.display = "none";
+}
+
+
+</script>
+</body>
+</html>
