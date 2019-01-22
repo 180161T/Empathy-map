@@ -15,11 +15,11 @@ def init():
 
 @app.route('/')
 def main():
-     # form = LoginForm(request.form)
-     # if 'username' in session:
+     form = LoginForm(request.form)
+     if 'username' in session:
             return render_template('Main Page.html')
-     # else:
-     #     return render_template('Login_Page.html', form = form)
+     else:
+         return render_template('Login_Page.html', form = form)
 
 
 @app.route("/login", methods=('GET', 'POST'))
