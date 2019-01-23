@@ -7,7 +7,11 @@ class User:
         self.password = ''
 
 
-loginFile = shelve.open('loginPage')
+with shelve.open('loginPage') as loginFile:
+    loginFile['user1'] = {
+        'Username': 'xavier',
+        'Password': 'haha',
+    }
 
 
 def clear_user():
