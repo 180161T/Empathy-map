@@ -24,7 +24,7 @@ def main():
      #     return render_template('Login_Page.html', form = form)
 
 
-@app.route("/login", methods=('GET', 'POST'))
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     login_form = LoginForm(request.form)
     error = None
@@ -39,7 +39,7 @@ def login():
     return render_template('Login_Page.html', form=login_form)
 
 
-@app.route('/register', methods=('GET', 'POST'))
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST':
