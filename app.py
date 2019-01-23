@@ -85,7 +85,7 @@ def cctv4():
     return render_template("CCTV_4.html")
 
 
-@app.route("/Aircon", methods=("GET", "POST"))
+@app.route("/Aircon", methods=('GET', 'POST'))
 def aircon():
     return render_template("AirconDesign.html", value=24)
 
