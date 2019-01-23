@@ -59,8 +59,8 @@ def register():
 
 
 @app.route("/remind")
-def reminder():
-    return render_template("Reminder page.html", reminder=Todo)
+def remind():
+    return render_template("remind.html")
 
 #Royce part
 

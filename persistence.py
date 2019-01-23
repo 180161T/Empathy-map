@@ -47,3 +47,12 @@ def create_user(username, password):
     u.username = username
     u.password = password
     loginFile[username] = u
+
+
+class notification:
+    def __init__(self):
+        self.chore = ''
+        self.person = ''
+
+todo = shelve.open('chores')
+

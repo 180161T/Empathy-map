@@ -20,7 +20,7 @@
         div.left {
             background-color: #24E0FF;
             float: right;
-            width: 50%;
+            width: 48%;
             border-style: double;
             border-color: brown;
             padding: 20px;
@@ -32,7 +32,7 @@
         div.right {
             background-color: #24E0FF;
             float: left;
-            width: 50%;
+            width: 48%;
             border-style: double;
             border-color: brown;
             padding: 20px;
@@ -58,6 +58,18 @@
             font-size: 18px;
         }
     </style>
+    <script>
+        function addtask() {
+            var item = prompt('What is the task?')
+
+        }
+
+        function remove() {
+            var x = document.getElementById("hobby");
+            x.remove(x.selectIndex);
+            location.reload();
+        }
+    </script>
     <title>Notification</title>
   </head>
   <br>
@@ -67,17 +79,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <div class = "btop">Notifications</div>
     <br>
+
     <div class = "left">
         Done
     </div>
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-50 justify-content-between">
-            <h5 class="mb-1">{{ history.item }}</h5>
-            <small>{{ history.when }}</small>
-        </div>
-        <p class="mb-1">{{ history.reason }}</p>
-        <small>{{ history.when }}</small>
-    </a>
+    {% block  body %}
+
+
+    <div class="list-group">
+
+    {% for todo in todo %}
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ todo.chore }}</h5>
+                <small>{{ todo.date }}</small>
+            </div>
+            <p class="mb-1">{{ todo.person }}</p>
+            <small>{{ todo.time }}</small>
+        </a>
+
+        {% endfor %} }}
+
+
+
+    </div>
+
+
+
+
+    {% endblock %}
     <div class = "right">
         To Do
     </div>
