@@ -12,14 +12,16 @@ def init():
     init_users()
     return 'db initialised'
 
+#Xavier Part
+
 
 @app.route('/')
 def main():
-     form = LoginForm(request.form)
-     if 'username' in session:
+     # form = LoginForm(request.form)
+     # if 'username' in session:
             return render_template('Main Page.html')
-     else:
-         return render_template('Login_Page.html', form = form)
+     # else:
+     #     return render_template('Login_Page.html', form = form)
 
 
 @app.route("/login", methods=('GET', 'POST'))
@@ -59,6 +61,8 @@ def register():
 def reminder():
     return render_template("Reminder page.html")
 
+#Royce part
+
 
 @app.route("/CCTV")
 def cctv():
@@ -85,6 +89,9 @@ def cctv4():
     return render_template("CCTV_4.html")
 
 
+#Ryan part
+
+
 @app.route("/Aircon", methods=("GET", "POST"))
 def aircon():
     return render_template("AirconDesign.html", value=24)
@@ -95,10 +102,14 @@ def update(value):
     value = value + 1
     return render_template('AirconDesign.html', value=value)
 
+#Yusuf part
+
 
 @app.route("/Lighting")
 def lighting():
     return render_template("Lighting-control.html")
+
+#Kah Ming part
 
 
 @app.route('/tracker')
