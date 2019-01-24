@@ -14,36 +14,37 @@ Air Conditioning
 Air-con Control Panel
 </p>
 
-<p id="temperatureControls" href="{{ url_for('update', value=value) }}">
+<a id="temperatureUp" href="{{ url_for('increase', value=value) }}">
 <img alt= '' id="temperatureArrow" src="{{url_for('static',filename='arrowup.png')}}"/>
+</a>
 <br>
-{{ value }}°C
 <br>
+<a id="temperatureDown" href="{{ url_for('decrease', value=value) }}">
 <img alt= '' id="temperatureArrow" src="{{url_for('static',filename='arrowup.png')}}" style="transform: rotate(180deg)">
-</p>>
+</a>
 
-<p id="powerControls">
-<img alt= '' id="powerButtonOn" src="{{url_for('static',filename='powerbutton.png')}}">
-<br>
-<img alt= '' id="powerButtonOff" src="{{url_for('static',filename='powerbutton.png')}}">
-</p>
+{#<p id="powerControls">#}
+{#<img alt= '' id="powerButtonOn" src="{{url_for('static',filename='powerbutton.png')}}">#}
+{#<br>#}
+{#<img alt= '' id="powerButtonOff" src="{{url_for('static',filename='powerbutton.png')}}">#}
+{#</p>#}
+{##}
+{#<p id="presetModes">#}
+{#<img alt= '' id="coolMode" src="{{url_for('static',filename='cool.png')}}">#}
+{#<img alt= '' id="fanMode" src="{{url_for('static',filename='fan.png')}}">#}
+{#<img alt= '' id="powerSavingMode" src="{{url_for('static',filename='powersaving.png')}}">#}
+{#</p>#}
+{##}
+{#<p id="powerON">#}
+{#ON#}
+{#</p>#}
+{#<p id="powerOFF">#}
+{#OFF#}
+{#</p>#}
 
-<p id="presetModes">
-<img alt= '' id="coolMode" src="{{url_for('static',filename='cool.png')}}">
-<img alt= '' id="fanMode" src="{{url_for('static',filename='fan.png')}}">
-<img alt= '' id="powerSavingMode" src="{{url_for('static',filename='powersaving.png')}}">
-</p>
-
-<p id="powerON">
-ON
-</p>
-<p id="powerOFF">
-OFF
-</p>
-
-<p id="currentTemperature">
-Current Temperature:
-</p>
+<div id="currentTemperature">
+Current Temperature: {{ value }}°C
+</div>
 
 </body>
 </html>
