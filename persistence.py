@@ -73,7 +73,7 @@ class Notification:
         self.person = ''
 
 
-todo = shelve.open('chores')
+todo = shelve.open('chores.db')
 
 
 def get_chore(chore, person):
