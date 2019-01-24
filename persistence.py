@@ -7,7 +7,11 @@ class User:
         self.password = ''
 
 
-loginFile = shelve.open('loginPage')
+with shelve.open('loginPage') as loginFile:
+    loginFile['user1'] = {
+        'Username': 'xavier',
+        'Password': 'haha',
+    }
 
 
 def clear_user():
@@ -43,3 +47,12 @@ def create_user(username, password):
     u.username = username
     u.password = password
     loginFile[username] = u
+
+
+class notification:
+    def __init__(self):
+        self.chore = ''
+        self.person = ''
+
+todo = shelve.open('chores')
+

@@ -2,6 +2,7 @@ from flask import *
 from persistence import *
 from Validators import *
 from his import Hist
+from todo import Todo
 
 app = Flask(__name__)
 Hist = Hist()
@@ -24,7 +25,7 @@ def main():
      #     return render_template('Login_Page.html', form = form)
 
 
-@app.route("/login", methods=('GET', 'POST'))
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     login_form = LoginForm(request.form)
     error = None
@@ -34,12 +35,12 @@ def login():
             error = 'Wrong username and password'
         else:
             session['username'] = user.username
-            return redirect(url_for('index'))
+            return redirect(url_for('main'))
         flash(error)
     return render_template('Login_Page.html', form=login_form)
 
 
-@app.route('/register', methods=('GET', 'POST'))
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST':
@@ -58,8 +59,8 @@ def register():
 
 
 @app.route("/remind")
-def reminder():
-    return render_template("Reminder page.html")
+def remind():
+    return render_template("remind.html")
 
 #Royce part
 
@@ -132,9 +133,10 @@ def map():
     return render_template('map.html')
 
 
-@app.route("/logout", methods=('GET', 'POST'))
+@app.route("/logout", methods=['GET', 'POST'])
 def logout():
     session.clear()
+    flash('You are not logged out')
     return redirect(url_for('main'))
 
 
