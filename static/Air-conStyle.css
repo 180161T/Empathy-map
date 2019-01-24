@@ -1,5 +1,5 @@
 html {
-    overflow: hidden;
+    overflow: auto;
 }
 
 a {
@@ -26,7 +26,7 @@ p#header {
     padding: 7px;
 }
 
-p#temperatureControls {
+a#temperatureUp, a#temperatureDown {
     color: white;
     font-family: "Nova Flat", Helvetica, sans-serif;
     font-size: 50px;
@@ -103,6 +103,7 @@ p#powerOFF {
 
 div#currentTemperature {
     font-size: 30px;
+    font-family: "Nova Flat", Helvetica, sans-serif;
     color: white;
     position: absolute;
     top: 500px;
