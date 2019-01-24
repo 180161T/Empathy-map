@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpapercave.com/wp/wp2596947.jpg');
+            background-size:cover;
+            font-family: sans-serif;
+        }
+        .loginbox{
+            width: 380px;
+            height: 350px;
+            color: #ffe6e6;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            box-sizing: border-box;
+            padding: 70px 20px;
+        }
+        img#avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top: -50px;
+            left: calc(50% - 50px);
+        }
+        .new{
+            text-align: center;
+        }
+        h1{
+            margin: 0;
+            padding: 0 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+        .loginbox p{
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+
+        }
+        .loginbox input{
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .loginbox input[type="submit"], input[type="text"]{
+            border: none;
+            height: 35px;
+            outline: none;
+        }
+        .loginbox input[type="checkbox"]{
+            position: absolute;
+            width: 10%
+        }
+        label{
+            display: inline-block;
+            width: 60%;
+            padding: 1px 35px 15px 30px;
+        }
+        .loginbox input[type="submit"]{
+            border: none;
+            outline: none;
+            height: 50px;
+            background: #fb2525;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 20px;
+            width: 100%;
+        }
+        .loginbox input[type="submit"]:hover{
+            cursor: pointer;
+            background: #ffc107;
+            color: #000;
+        }
+        .loginbox a{
+            text-decoration: none;
+            text-align: right;
+            font-size: 15px;
+            line-height: 30px;
+            color: #00ffbf;
+            margin: 1px;
+        }
+        .loginbox a:hover{
+            color: #ffc107;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="loginbox">
+<img id="avatar" src="{{url_for('static', filename='Username.jpg')}}">
+    <h1>Login</h1>
+    <form method="post" action="/login">
+        <p>Username</p>
+        <input type="text" id="username" placeholder="Username" required>
+        <p>Password</p>
+        <input type="text" id="password" placeholder="Password" required>
+        <input id="check" type="checkbox" value="remember">
+        <label for="check">Remember password</label>
+        <input type="submit" value="Log In">
+        <div class="new">
+            <p>New to this?</p><a href="/register">Sign up here</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
