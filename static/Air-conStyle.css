@@ -30,7 +30,7 @@ img#temperatureArrow {
     width: 150px;
     height: 150px;
     border-radius: 8px;
-    text-align: center;
+    margin-left: 45%;
 }
 
 div#currentTemperature {

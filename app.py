@@ -109,17 +109,25 @@ def cctv4():
 
 
 #Ryan part
-
+TemperatureOpen = shelve.open("Temperature")
 
 @app.route("/Aircon", methods=("GET", "POST"))
 def aircon():
-    return render_template("AirconDesign.html", value=24)
+    DefaultValue = 24
+    klist = list(TemperatureOpen.keys())
+    for keys in klist:
+        if keys == "Temperature": #Change to a unique ID Later
+            DefaultValue = TemperatureOpen[keys]
+    return render_template("AirconDesign.html", value=DefaultValue)
 
 
 @app.route("/Aircon/increase/<int:value>")
 def increase(value):
     if value < 30:
         value = value + 1
+        Temp = Temperature()
+        Temp.setTemperature(value)
+        Temp.StoreData()
         return render_template('AirconDesign.html', value=value)
     else:
         return render_template('AirconDesign.html', value=30)
@@ -128,6 +136,9 @@ def increase(value):
 def decrease(value):
     if value > 16:
         value = value - 1
+        Temp = Temperature()
+        Temp.setTemperature(value)
+        Temp.StoreData()
         return render_template('AirconDesign.html', value=value)
     else:
         return render_template('AirconDesign.html', value=16)
