@@ -98,7 +98,7 @@ def aircon():
     return render_template("AirconDesign.html", value=24)
 
 
-@app.route("/Aircon/update/<int:value>")
+@app.route("/update/<int:value>")
 def update(value):
     value = value + 1
     return render_template('AirconDesign.html', value=value)
