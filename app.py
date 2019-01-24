@@ -1,17 +1,29 @@
 from flask import *
 from persistence import *
-from Validators import *
+import functools
 from his import Hist
 from todo import Todo
 
 app = Flask(__name__)
+app.config.from_mapping(
+    SECRET_KEY='dev'
+)
 Hist = Hist()
 Todo = Todo()
 
 
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if session['id'] is None:
+            return redirect(url_for('login'))
+        return view(**kwargs)
+    return wrapped_view
+
+
 @app.route('/init')
 def init():
-    init_users()
+    init_db()
     return 'db initialised'
 
 #Xavier Part
@@ -19,34 +31,40 @@ def init():
 
 @app.route('/')
 def main():
-     # form = LoginForm(request.form)
-     # if 'username' in session:
-            return render_template('Main Page.html')
-     # else:
-     #     return render_template('Login_Page.html', form = form)
+     if 'id' in session:
+         return render_template('Main Page.html')
+
+     else:
+         return render_template('Login_Page.html')
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    login_form = LoginForm(request.form)
-    error = None
     if request.method == 'POST':
-        user = get_user(login_form.id.data, login_form.password.data)
-        if user is None:
-            error = 'Wrong username and password'
+        username = request.form['username']
+        password = request.form['password']
+        error = None
+        if not username:
+            error = 'Username is required.'
+        elif not password:
+            error = 'Password is required.'
         else:
-            session['username'] = user.username
-            return redirect(url_for('main'))
+            user = get_user(username, password)
+            if user is None:
+                error = 'Wrong username and password'
+            else:
+                session['id'] = user.get_id()
+                session['user_name'] = user.get_username()
+                return redirect(url_for('main'))
         flash(error)
-    return render_template('Login_Page.html', form=login_form)
+    return render_template('Login_Page.html')
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=('GET', 'POST'))
 def register():
-    form = RegisterForm(request.form)
     if request.method == 'POST':
-        username = form.id.data
-        password = form.password.data
+        username = request.form['username']
+        password = request.form['password']
         error = None
         if not username:
             error = 'Username is required.'
@@ -56,7 +74,7 @@ def register():
             create_user(username, password)
             return redirect(url_for('login'))
         flash(error)
-    return render_template('register.html', form=form)
+    return render_template('Register.html')
 
 
 @app.route("/remind")
@@ -137,9 +155,9 @@ def map():
 @app.route("/logout", methods=['GET', 'POST'])
 def logout():
     session.clear()
-    flash('You are not logged out')
     return redirect(url_for('main'))
 
 
-if __name__ == "__main__":
-    app.run(port=80)
+if __name__ == '__main__':
+    app.debug = True
+    app.run()

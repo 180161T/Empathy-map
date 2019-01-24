@@ -40,7 +40,7 @@
             text-align: center;
             font-size: 22px;
         }
-        .loginbox p{
+        .loginbox label{
             margin: 0;
             padding: 0;
             font-weight: bold;
@@ -97,18 +97,25 @@
 <div class="loginbox">
 <img id="avatar" src="{{url_for('static', filename='Username.jpg')}}">
     <h1>Login</h1>
-    <form method="POST" action="/login">
-        <p>Username</p>
-        <input type="text" id="username" placeholder="Username" required>
-        <p>Password</p>
-        <input type="text" id="password" placeholder="Password" required>
+
+{%  block content %}
+    <form method="post">
+        <label for="username">Username</label>
+
+        <input type="text" id="username" name="username" placeholder="Username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+
         <input id="check" type="checkbox" value="remember">
         <label for="check">Remember password</label>
-        <input type="submit" value="Login">
+        <input type="submit" value="Log In">
         <div class="new">
             <p>New to this?</p><a href="/register">Sign up here</a>
         </div>
     </form>
+{% endblock %}
+
 </div>
 </body>
 </html>
