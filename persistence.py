@@ -99,8 +99,8 @@ def create_chore(chore, person):
 shelveopen = shelve.open('Temperature')
 
 class Temperature:
-    def __init__(self):
-        self.__Temperature = Temperature
+    def __init__(self, ID):
+        self.__ID = ID
 
     def getTemperature(self):
         return self.__Temperature
@@ -109,4 +109,4 @@ class Temperature:
         self.__Temperature = Temperature
 
     def StoreData(self):
-        shelveopen["Temperature"] = self.__Temperature
+        shelveopen[self.__ID] = self.__Temperature

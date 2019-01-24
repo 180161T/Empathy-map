@@ -116,7 +116,7 @@ def aircon():
     DefaultValue = 24
     klist = list(TemperatureOpen.keys())
     for keys in klist:
-        if keys == "Temperature": #Change to a unique ID Later
+        if keys == "Key": #Change to a unique ID later
             DefaultValue = TemperatureOpen[keys]
     return render_template("AirconDesign.html", value=DefaultValue)
 
@@ -125,7 +125,7 @@ def aircon():
 def increase(value):
     if value < 30:
         value = value + 1
-        Temp = Temperature()
+        Temp = Temperature("Key")
         Temp.setTemperature(value)
         Temp.StoreData()
         return render_template('AirconDesign.html', value=value)
@@ -136,7 +136,7 @@ def increase(value):
 def decrease(value):
     if value > 16:
         value = value - 1
-        Temp = Temperature()
+        Temp = Temperature("Key")
         Temp.setTemperature(value)
         Temp.StoreData()
         return render_template('AirconDesign.html', value=value)
