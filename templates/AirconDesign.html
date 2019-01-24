@@ -14,7 +14,7 @@ Air Conditioning
 Air-con Control Panel
 </p>
 
-<p id="temperatureControls" href="{{ url_for(' update', value=value) }}">
+<p id="temperatureControls" href="{{ url_for('update', value=value) }}">
 <img alt= '' id="temperatureArrow" src="{{url_for('static',filename='arrowup.png')}}"/>
 <br>
 {{ value }}°C
