@@ -14,10 +14,12 @@ Air Conditioning
 Air-con Control Panel
 </p>
 
-<a id="temperatureUp" href="{{ url_for('update', value=value) }}">
+<a id="temperatureUp" href="{{ url_for('increase', value=value) }}">
 <img alt= '' id="temperatureArrow" src="{{url_for('static',filename='arrowup.png')}}"/>
 </a>
-<a id="temperatureDown" href="{{ url_for('update', value=value) }}">
+<br>
+<br>
+<a id="temperatureDown" href="{{ url_for('decrease', value=value) }}">
 <img alt= '' id="temperatureArrow" src="{{url_for('static',filename='arrowup.png')}}" style="transform: rotate(180deg)">
 </a>
 

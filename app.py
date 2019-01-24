@@ -116,10 +116,21 @@ def aircon():
     return render_template("AirconDesign.html", value=24)
 
 
-@app.route("/Aircon/update/<int:value>")
-def update(value):
-    value = value + 1
-    return render_template('AirconDesign.html', value=value)
+@app.route("/Aircon/increase/<int:value>")
+def increase(value):
+    if value < 30:
+        value = value + 1
+        return render_template('AirconDesign.html', value=value)
+    else:
+        return render_template('AirconDesign.html', value=30)
+
+@app.route("/Aircon/decrease/<int:value>")
+def decrease(value):
+    if value > 16:
+        value = value - 1
+        return render_template('AirconDesign.html', value=value)
+    else:
+        return render_template('AirconDesign.html', value=16)
 
 #Yusuf part
 
