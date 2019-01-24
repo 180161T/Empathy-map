@@ -6,6 +6,7 @@ from todo import Todo
 
 app = Flask(__name__)
 Hist = Hist()
+Todo = Todo()
 
 
 @app.route('/init')
@@ -60,7 +61,7 @@ def register():
 
 @app.route("/remind")
 def remind():
-    return render_template("remind.html")
+    return render_template("remind.html", todo=Todo)
 
 #Royce part
 

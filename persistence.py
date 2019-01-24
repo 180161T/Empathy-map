@@ -49,10 +49,34 @@ def create_user(username, password):
     loginFile[username] = u
 
 
-class notification:
+class Notification:
     def __init__(self):
         self.chore = ''
         self.person = ''
 
+
 todo = shelve.open('chores')
+
+
+def get_chore(chore, person):
+    if chore in todo:
+        chore = todo[chore]
+        if chore.person == person:
+            return person
+    return None
+
+
+def clear_chore():
+    clist = list(todo.keys())
+    for key in clist:
+        del todo[key]
+
+
+def create_chore(chore, person):
+    c = Notification()
+    c.chore = chore
+    c.person = person
+    todo[chore] = c
+
+
 

@@ -20,7 +20,7 @@
         div.left {
             background-color: #24E0FF;
             float: right;
-            width: 48%;
+            width: 50%;
             border-style: double;
             border-color: brown;
             padding: 20px;
@@ -32,7 +32,7 @@
         div.right {
             background-color: #24E0FF;
             float: left;
-            width: 48%;
+            width: 50%;
             border-style: double;
             border-color: brown;
             padding: 20px;
@@ -60,12 +60,17 @@
     </style>
     <script>
         function addtask() {
-            var item = prompt('What is the task?')
+            var item = prompt('What is the chore?');
+            var list = document.getElementById("tasks");
+            var create = document.createElement("c");
+            create.innerText = item;
+            create.className = "list-group-item list-group-item-action flex-column align-items-start ";
+    	    list.appendChild(create);
 
         }
 
         function remove() {
-            var x = document.getElementById("hobby");
+            var x = document.getElementById("tasks");
             x.remove(x.selectIndex);
             location.reload();
         }
@@ -79,18 +84,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <div class = "btop">Notifications</div>
     <br>
-
     <div class = "left">
         Done
     </div>
+    <div class = "right">
+        To Do
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
     {% block  body %}
 
 
-    <div class="list-group">
+    <div class="list-group" id="tasks">
 
-    {% for todo in todo %}
+        {% for todo in todo %}
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex w-50 justify-content-between">
                 <h5 class="mb-1">{{ todo.chore }}</h5>
                 <small>{{ todo.date }}</small>
             </div>
@@ -108,9 +120,7 @@
 
 
     {% endblock %}
-    <div class = "right">
-        To Do
-    </div>
+
     <div class="add">
         <button id="c" onclick="addtask()" class="btn btn-outline-info btn-lg" >Add task</button>
     </div>
