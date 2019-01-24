@@ -33,7 +33,6 @@ def init():
 def main():
      if 'id' in session:
          return render_template('Main Page.html')
-
      else:
          return render_template('Login_Page.html')
 
