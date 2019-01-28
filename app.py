@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request
 from Persistence import *
-from his import Hist
-from CCTV_Persistence import  *
 
+from CCTV_Persistence import  *
+from flask import *
+Shelveopen = shelve.open('Items')
 app = Flask(__name__)
 
-Hist = Hist()
+
 
 
 @app.route("/")
@@ -303,12 +304,65 @@ def index():
 
 @app.route('/items')
 def items():
-    return render_template('items.html')
+    klist = list(Shelveopen.keys())
+    if len(klist) > 0:
+        for key in klist:
+            if key == "Key":
+                Result = Shelveopen["Key"]
+                Lastest = int(len(Result)) - 1
+                r1 = Result
+
+                return render_template('items.html', r1=r1)
+        else:
+            return render_template('items.html')
+    else:
+        return render_template('items.html')
+
+@app.route('/Calculation', methods=['GET', 'POST'])
+def Adding():
+
+    if request.method == 'POST':
+        if 'deleteItem' in request.form:
+            deleteItem = request.form['deleteItem']
+
+            if len(deleteItem) != 0:
+                deleteIndex = int(deleteItem) - 1
+                Value = Shelveopen["Key"]
+                Value.pop(deleteIndex)
+                del Shelveopen["Key"]
+                Shelveopen["Key"] = Value
+
+        if 'AddItems' in request.form:
+            Inputss = request.form['AddItems']
+
+            if len(Inputss) != 0:
+                klist = list(Shelveopen.keys())
+                if len(klist)>0:
+                    for key in klist:
+                        Check = True
+                        if key == "Key":
+                            Value = Shelveopen["Key"]
+                            Value.append(Inputss)
+                            del Shelveopen["Key"]
+                            Shelveopen["Key"] = Value
+                            Check = False
+                    if Check == True:
+                        Value = []
+                        Value.append(Inputss)
+                        Shelveopen["Key"] = Value
+                else:
+                    Value = []
+                    Value.append(Inputss)
+                    Shelveopen["Key"] = Value
+
+    return redirect(url_for('items'))
+
+
 
 
 @app.route('/history')
 def history():
-    return render_template('history.html', history=Hist)
+    return render_template('history.html')
 
 
 @app.route('/map')
