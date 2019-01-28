@@ -32,60 +32,65 @@
 <h1>CCTV 1 Settings</h1>
 <div class="record">
     <span>
-    <h3> Period of Recording: </h3>
-    <select name="DateTime1">
-        <option value="1"> 0000 </option>
-        <option value="2"> 0100 </option>
-        <option value="3"> 0200 </option>
-        <option value="4"> 0300 </option>
-        <option value="5"> 0400 </option>
-        <option value="6"> 0500 </option>
-        <option value="7"> 0600 </option>
-        <option value="8"> 0700 </option>
-        <option value="9"> 0800 </option>
-        <option value="10"> 0900 </option>
-        <option value="11"> 1000 </option>
-        <option value="12"> 1100 </option>
-        <option value="13"> 1200 </option>
-        <option value="14"> 1300 </option>
-        <option value="15"> 1400 </option>
-        <option value="16"> 1500 </option>
-        <option value="17"> 1600 </option>
-        <option value="18"> 1700 </option>
-        <option value="19"> 1800 </option>
-        <option value="20"> 1900 </option>
-        <option value="21"> 2000 </option>
-        <option value="22"> 2100 </option>
-        <option value="23"> 2200 </option>
-        <option value="24"> 2300 </option>
+        <h3> Period of Recording: </h3>
+
+    <form action="/CCTV_1" method="post">
+
+    <select name="DateTime1" onclick="this.form.submit();">
+        <option value="0" {{ selected1_0 }}> 0000 </option>
+        <option value="1" {{ selected1_1 }}> 0100 </option>
+        <option value="2" {{ selected1_2 }}> 0200 </option>
+        <option value="3" {{ selected1_3 }}> 0300 </option>
+        <option value="4" {{ selected1_4 }}> 0400 </option>
+        <option value="5" {{ selected1_5 }}> 0500 </option>
+        <option value="6" {{ selected1_6 }}> 0600 </option>
+        <option value="7" {{ selected1_7 }}> 0700 </option>
+        <option value="8" {{ selected1_8 }}> 0800 </option>
+        <option value="9" {{ selected1_9 }}> 0900 </option>
+        <option value="10" {{ selected1_10 }}> 1000 </option>
+        <option value="11" {{ selected1_11 }}> 1100 </option>
+        <option value="12" {{ selected1_12 }}> 1200 </option>
+        <option value="13" {{ selected1_13 }}> 1300 </option>
+        <option value="14" {{ selected1_14 }}> 1400 </option>
+        <option value="15" {{ selected1_15 }}> 1500 </option>
+        <option value="16" {{ selected1_16 }}> 1600 </option>
+        <option value="17" {{ selected1_17 }}> 1700 </option>
+        <option value="18" {{ selected1_18 }}> 1800 </option>
+        <option value="19" {{ selected1_19 }}> 1900 </option>
+        <option value="20" {{ selected1_20 }}> 2000 </option>
+        <option value="21" {{ selected1_21 }}> 2100 </option>
+        <option value="22" {{ selected1_22 }}> 2200 </option>
+        <option value="23" {{ selected1_23 }}> 2300 </option>
     </select>
     to
-    <select name="DateTime2">
-        <option value="1"> 0100 </option>
-        <option value="2"> 0200 </option>
-        <option value="3"> 0300 </option>
-        <option value="4"> 0400 </option>
-        <option value="5"> 0500 </option>
-        <option value="6"> 0600 </option>
-        <option value="7"> 0700 </option>
-        <option value="8"> 0800 </option>
-        <option value="9"> 0900 </option>
-        <option value="10"> 1000 </option>
-        <option value="11"> 1100 </option>
-        <option value="12"> 1200 </option>
-        <option value="13"> 1300 </option>
-        <option value="14"> 1400 </option>
-        <option value="15"> 1500 </option>
-        <option value="16"> 1600 </option>
-        <option value="17"> 1700 </option>
-        <option value="18"> 1800 </option>
-        <option value="19"> 1900 </option>
-        <option value="20"> 2000 </option>
-        <option value="21"> 2100 </option>
-        <option value="22"> 2200 </option>
-        <option value="23"> 2300 </option>
-        <option value="24"> 0000 </option>
+    <select name="DateTime2" onclick="this.form.submit();">
+        <option value="0" {{ selected2_0 }}> 0000 </option>
+        <option value="1" {{ selected2_1 }}> 0100 </option>
+        <option value="2" {{ selected2_2 }}> 0200 </option>
+        <option value="3" {{ selected2_3 }}> 0300 </option>
+        <option value="4" {{ selected2_4 }}> 0400 </option>
+        <option value="5" {{ selected2_5 }}> 0500 </option>
+        <option value="6" {{ selected2_6 }}> 0600 </option>
+        <option value="7" {{ selected2_7 }}> 0700 </option>
+        <option value="8" {{ selected2_8 }}> 0800 </option>
+        <option value="9" {{ selected2_9 }}> 0900 </option>
+        <option value="10" {{ selected2_10 }}> 1000 </option>
+        <option value="11" {{ selected2_11 }}> 1100 </option>
+        <option value="12" {{ selected2_12 }}> 1200 </option>
+        <option value="13" {{ selected2_13 }}> 1300 </option>
+        <option value="14" {{ selected2_14 }}> 1400 </option>
+        <option value="15" {{ selected2_15 }}> 1500 </option>
+        <option value="16" {{ selected2_16 }}> 1600 </option>
+        <option value="17" {{ selected2_17 }}> 1700 </option>
+        <option value="18" {{ selected2_18 }}> 1800 </option>
+        <option value="19" {{ selected2_19 }}> 1900 </option>
+        <option value="20" {{ selected2_20 }}> 2000 </option>
+        <option value="21" {{ selected2_21 }}> 2100 </option>
+        <option value="22" {{ selected2_22 }}> 2200 </option>
+        <option value="23" {{ selected2_23 }}> 2300 </option>
     </select>
+</form>
+
     </span>
 </div>
 
