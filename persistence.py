@@ -68,9 +68,9 @@ def init():
 
 
 class Notification:
-    def __init__(self):
-        self.chore = ''
-        self.person = ''
+    def __init__(self, chore, person):
+        self.__chore = chore
+        self.__person = person
 
 
 todo = shelve.open('chores.db')
@@ -96,7 +96,9 @@ def create_chore(chore, person):
     c.person = person
     todo[chore] = c
 
+
 shelveopen = shelve.open('Temperature')
+
 
 class Temperature:
     def __init__(self, ID):

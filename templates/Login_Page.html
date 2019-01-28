@@ -34,6 +34,11 @@
         .new{
             text-align: center;
         }
+        .new p{
+            font-size: large;
+            color: greenyellow;
+            font-weight: bolder;
+        }
         h1{
             margin: 0;
             padding: 0 0 20px;
@@ -50,14 +55,14 @@
             width: 100%;
             margin-bottom: 20px;
         }
+        .loginbox input[type="password"]{
+            padding: 5px;
+            width: 96%
+        }
         .loginbox input[type="submit"], input[type="text"]{
             border: none;
             height: 35px;
             outline: none;
-        }
-        .loginbox input[type="checkbox"]{
-            position: absolute;
-            width: 10%
         }
         label{
             display: inline-block;
@@ -82,7 +87,7 @@
         .loginbox a{
             text-decoration: none;
             text-align: right;
-            font-size: 15px;
+            font-size: 25px;
             line-height: 30px;
             color: #00ffbf;
             margin: 1px;
@@ -101,14 +106,11 @@
 {%  block content %}
     <form method="post">
         <label for="username">Username</label>
-
         <input type="text" id="username" name="username" placeholder="Username" required>
 
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" required>
 
-        <input id="check" type="checkbox" value="remember">
-        <label for="check">Remember password</label>
         <input type="submit" value="Log In">
         <div class="new">
             <p>New to this?</p><a href="/register">Sign up here</a>

@@ -11,6 +11,8 @@ app.config.from_mapping(
 Hist = Hist()
 Todo = Todo()
 
+#Xavier Part
+
 
 def login_required(view):
     @functools.wraps(view)
@@ -26,18 +28,16 @@ def init():
     init_db()
     return 'db initialised'
 
-#Xavier Part
-
 
 @app.route('/')
 def main():
-     if 'id' in session:
-         return render_template('Main Page.html')
-     else:
-         return render_template('Login_Page.html')
+    if 'id' in session:
+        return render_template('Main Page.html')
+    else:
+        return render_template('Login_Page.html')
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route('/login',  methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -64,16 +64,31 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        reenter = request.form['reenter']
         error = None
         if not username:
             error = 'Username is required.'
         elif not password:
             error = 'Password is required.'
+        # elif password != reenter:
+        #     error = 'Password must be the same'
         else:
             create_user(username, password)
+            flash("Thanks for registering!")
             return redirect(url_for('login'))
         flash(error)
     return render_template('Register.html')
+
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('main'))
+
+
+@app.route("/home")
+def home():
+    return render_template("Main Page.html")
 
 
 @app.route("/remind")
@@ -132,6 +147,7 @@ def increase(value):
     else:
         return render_template('AirconDesign.html', value=30)
 
+
 @app.route("/Aircon/decrease/<int:value>")
 def decrease(value):
     if value > 16:
@@ -171,12 +187,6 @@ def history():
 @app.route('/map')
 def map():
     return render_template('map.html')
-
-
-@app.route("/logout", methods=['GET', 'POST'])
-def logout():
-    session.clear()
-    return redirect(url_for('main'))
 
 
 if __name__ == '__main__':
