@@ -4,6 +4,8 @@ import uuid
 
 users = shelve.open('user.db')
 
+#Yusuf part
+
 
 def addTime(userName, newTime):
     if userName in timeInfo: # check if time already exists
@@ -37,7 +39,7 @@ def createsettings(num):
     n=Settings(num)
     return n.get_num()
 
-
+#Xavier part
 
 
 class User:
@@ -130,6 +132,8 @@ def create_chore(chore, person):
     c.chore = chore
     c.person = person
     todo[chore] = c
+
+#Ryan part
 
 
 shelveopen = shelve.open('Temperature')
