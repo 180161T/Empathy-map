@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Map
+{% extends 'layout.html' %}
 
-<img src='{{ url_for('static',filename='house.jpg') }}'>
-
-
-</body>
-
-
+{% block body  %}
 
 <style>
-    body {
-        background-image: url("https://www.bing.com/images/search?view=detailV2&ccid=e3llOIC%2f&id=4A10C5A088F3A3DE5ABC17E6B4209FF82171F2B4&thid=OIP.e3llOIC_so9vTxsbGDCw1wHaFr&mediaurl=http%3a%2f%2fwww.cityofmidlandmi.gov%2fImageRepository%2fDocument%3fdocumentID%3d2329&exph=806&expw=1050&q=Apartment+Layout&simid=608050329824071357&selectedIndex=0.jpg");
-    }
+body {
+    background-image: url("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569"), url("http://www.whitehouse51.com/pic/lynchforva.com/wp-content/uploads/map-together-marla-house-design-moreover_44546.jpg");
+
+
+    background-repeat: no-repeat;
+    background-size: auto ;
+    margin-left: 50%;
+}
 </style>
-</html>
+
+
+
+
+
+{% endblock %}
