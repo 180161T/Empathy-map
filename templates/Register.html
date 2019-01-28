@@ -36,7 +36,7 @@
             text-align: center;
             font-size: 22px;
         }
-        .registerbox p{
+        .registerbox label{
             margin: 0;
             padding: 0;
             font-weight: bold;
@@ -75,15 +75,17 @@
 <div class="registerbox">
 <img id="avatar" src="{{url_for('static', filename='Username.jpg')}}">
     <h1>Register</h1>
-    <form method="POST" action="/register/">
-        <p>Username</p>
-        <input type="text" id="username" placeholder="Username" required>
-        <p>Password</p>
-        <input type="text" id="password" placeholder="Password" required>
-        <p>Re-enter Password</p>
-        <input type="text" name="" placeholder="Re-enter Password">
+{%  block content %}
+    <form method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <label for="password">Password</label>
+        <input type="text" id="password" name="password" placeholder="Password" required>
+{#        <label for="Re-enter_password">Re-enter Password</label>#}
+{#        <input type="text" id="password" name="" placeholder="Re-enter Password" required>#}
         <input type="submit" value="Sign Up">
-    </form>
+
+{%  endblock %}
 </div>
 </body>
 </html>

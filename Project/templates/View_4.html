@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> CCTV 4 </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+</head>
+<body>
+    <style>
+        body {
+        background-image: url("https://cdn.discordapp.com/attachments/506669690584694805/519339572988084234/spacebackground.jpg");
+    }
+        #container {
+    margin: auto;
+    width: 500px;
+    height: 375px;
+    border: 10px #333 solid;
+    }
+        #videoElement {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+    }
+        button {
+        padding: 15px;
+        background-color: black;
+        font-size: 20px;
+        color: aliceblue;
+        opacity: 0.6;
+    }
+    button:hover {
+        opacity: 1.0;
+    }
+
+    h2 {
+        text-align: center;
+        color: aliceblue;
+    }
+    </style>
+    <h2> CCTV 4 Viewing </h2>
+<div id="container">
+    <video autoplay="true" id="videoElement">
+
+    </video>
+</div>
+<script>
+    var video = document.querySelector("#videoElement");
+
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({video: true})
+    .then(function(stream) {
+     video.srcObject = stream;
+  })
+     .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+</script>
+<a href="/CCTV"><button type="submit"> &#8617; CCTV </button></a>
+</body>
+</html>

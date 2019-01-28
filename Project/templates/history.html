@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block  body %}
+
+    <h1 style="color: black; text-align: center; background-color: white;">History</h1>
+    <div class="list-group">
+
+    {% for history in history %}
+     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+     <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">{{ history.item }}</h5>
+    <small>{{ history.when }}</small>
+    </div>
+ <p class="mb-1">{{ history.reason }}</p>
+    <small>{{ history.when }}</small>
+  </a>
+
+        {% endfor %} }}
+
+
+
+</div>
+
+
+
+
+{% endblock %}
