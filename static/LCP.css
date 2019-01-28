@@ -492,8 +492,10 @@ body {
 
 }
 
-#d2{
-        color:white;
+#d2{position:absolute;
+    bottom:120px;
+    right:555px;
+    color:white;
 
 }#demo3{
 
@@ -502,8 +504,10 @@ body {
 
 }
 
-#d3{
-        color:white;
+#d3{position:absolute;
+    bottom:120px;
+    right:185px;
+    color:white;
 
 }
 
