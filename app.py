@@ -127,6 +127,7 @@ def cctv4():
 #Ryan part
 TemperatureOpen = shelve.open("Temperature")
 
+
 @app.route("/Aircon", methods=("GET", "POST"))
 def aircon():
     DefaultValue = 24
