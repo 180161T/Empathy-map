@@ -52,21 +52,28 @@ Lights Control Panel
 
 <div class="slidecontainer">
     <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    <p id="d">Value: <span id="demo"></span></p>
 </div>
 
 <div class="slidecontainer1">
   <input type="range" min="1" max="100" value="50" class="slider1" id="myRange1">
+    <p id="d1">Value: <span id="demo1"></span></p>
 </div>
 
 
 <div class="slidecontainer2">
   <input type="range" min="1" max="100" value="50" class="slider2" id="myRange2">
+    <p id="d2">Value: <span id="demo2"></span></p>
 </div>
 
 
 <div class="slidecontainer3">
   <input type="range" min="1" max="100" value="50" class="slider3" id="myRange3">
+    <p id="d3">Value: <span id="demo3"></span></p>
 </div>
+
+<a href="/w" id="save" ><button class="savesetting">Save light settings</button></a>
+
 <script>
     var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
@@ -75,6 +82,38 @@ output.innerHTML = slider.value; // Display the default slider value
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
   output.innerHTML = this.value;
+}
+
+var slider1 = document.getElementById("myRange1");
+    var output1 = document.getElementById("demo1");
+    output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+}
+
+
+
+
+
+ var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    output2.innerHTML = slider2.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider2.oninput = function() {
+  output2.innerHTML = this.value;
+}
+
+
+ var slider3 = document.getElementById("myRange3");
+    var output3 = document.getElementById("demo3");
+    output3.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider3.oninput = function() {
+  output3.innerHTML = this.value;
 }
 
 
