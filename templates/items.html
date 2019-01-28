@@ -1,68 +1,66 @@
-{%  extends 'layout.html' %}
-
-{% block body %}
-
-  <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-
-
+<body>
 <style>
+    body {
+            background-image: url("https://cdn.discordapp.com/attachments/506669690584694805/519339572988084234/spacebackground.jpg");
+        }
+    #alin {
+        text-align: center;
+    }
 
 
-.new_button{
-	display:block;
+    .backbut {
+        margin-left:20px;
+    }
 
-}
 
-button{
-margin: 2% 45%;
-}
+
+
+
 
 </style>
 
-<script>
+<div id="alin">
+<br>
+{% for item in r1 %}
+    <a href="/map"><br><button class="btn btn-warning"> {{  item }} </button></a> <br>
+{% endfor %}
+<br>
+<form method="post" action="/Calculation">
+    <input type="textbox" name="AddItems" placeholder="Add item +" >
+    <br><input type="submit" value="Add">
 
-    function addItem() {
-    	var item = prompt("Enter a new item:");
-    	while(!item){
-            var item=prompt('Please Enter a item');
+<br><br><br><br>
+<select name="deleteItem">
+    <option value=""></option>
+    {% for item in r1 %}
+        <option value="{{ loop.index }}">{{ item }}</option>
 
-            }
-	    var list=document.getElementById("hobby");
-    	var create = document.createElement("button");
-    	create.innerText = item;
-        create.className = "btn btn-outline-primary btn-lg new_button ";
-    	list.appendChild(create);
+    {% endfor %}
+</select>
 
-	}
-
-	function remove(){
-        var x = document.getElementById("hobby");
-        x.remove(x.selectIndex);
-        location.reload();
-    }
-
-  </script>
+ <br><input type="submit" value="Delete">
 
 
-<body>
-
-
-  <div id="hobby">
-
-  </div>
-  <button id="c" onclick="addItem()" class="btn btn-outline-primary btn-lg" >Add Item +</button>
-
-
-<button class="btn btn-primary" onclick="remove()">Remove</button>
+</div>
+</form>
+<br><br>
+<div class="backbut">
+    <a href="/tracker"><button class="btn btn-info">Back</button></a>
+</div>
 
 </body>
-</html>
 
-{%  endblock %}
+
+
+</html>
