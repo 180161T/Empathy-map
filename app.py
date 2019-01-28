@@ -65,7 +65,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        reenter = request.form['reenter']
+        # reenter = request.form['reenter']
         error = None
         if not username:
             error = 'Username is required.'
