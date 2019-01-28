@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 from persistence import *
 import functools
-
+import shelve
+Shelveopen = shelve.open('Items')
 from todo import Todo
 import persistence
 import datetime
